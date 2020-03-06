@@ -1,21 +1,21 @@
 ## read train dataset
-train_ds <- read.table("data/UCI HAR Dataset/train/X_train.txt")
+train_ds <- read.table("train/X_train.txt")
 ## read test dataset
-test_ds <- read.table("data/UCI HAR Dataset/test/X_test.txt")
+test_ds <- read.table("test/X_test.txt")
 ## merge train and test dataset
 one_ds <- rbind(train_ds,test_ds)
 
 ## dataset names
-ds_name <- read.table("data/UCI HAR Dataset/features.txt")
+ds_name <- read.table("features.txt")
 ## assign column names
 names(one_ds) <- ds_name[,2]
 ## extract dataset with mean and std measurement
 extract_ds <- one_ds[,grep("mean|std",ds_name[,2])]
 
 ## train activity
-train_activity <- read.table("data/UCI HAR Dataset/train/Y_train.txt")
+train_activity <- read.table("train/Y_train.txt")
 ## test activity
-test_activity <- read.table("data/UCI HAR Dataset/test/Y_test.txt")
+test_activity <- read.table("test/Y_test.txt")
 ## merge train and test activity
 one_activity <- rbind(train_activity, test_activity)
 ## map index to activity description
@@ -26,9 +26,9 @@ names(one_activity) <- c("Activity")
 extract_ds <- cbind(one_activity, extract_ds)
 
 ## train subject
-train_subject <- read.table("data/UCI HAR Dataset/train/subject_train.txt")
+train_subject <- read.table("train/subject_train.txt")
 ## test subject
-test_subject <- read.table("data/UCI HAR Dataset/test/subject_test.txt")
+test_subject <- read.table("test/subject_test.txt")
 ## merge train and test subject
 one_subject <- rbind(train_subject, test_subject)
 ## change column name
